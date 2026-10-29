@@ -1,4 +1,4 @@
-# Plataforma de Venta, Reventa Segura y Control de Aforo en Tiempo Real (Opción 5)
+# Plataforma de Venta, Reventa Segura y Control de Aforo en Tiempo Real
 
 [![Runtime: Bun](https://img.shields.io/badge/Runtime-Bun%20v1.4+-black?logo=bun)](https://bun.sh/)
 [![Backend: Hono](https://img.shields.io/badge/Backend-Hono%20Framework-E36002?logo=hono)](https://hono.dev/)

@@ -7,9 +7,11 @@
     "test": "bun test"
   },
   "dependencies": {
+    "@azure/storage-blob": "^12.34.0",
+    "@sistema-eventos/shared": "workspace:*",
+    "dotenv": "^18.0.9",
     "hono": "^4.6.14",
-    "zod": "^3.23.8",
-    "@sistema-eventos/shared": "workspace:*"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/bun": "latest",
