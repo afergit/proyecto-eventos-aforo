@@ -6,6 +6,7 @@ import { BunPasswordHasher } from './infrastructure/security/passwordHasher';
 import { JwtService } from './infrastructure/security/jwtService';
 import { authMiddleware } from './presentation/middlewares/authMiddleware';
 import { AzureBlobStorageService } from './infrastructure/storage/azureBlobService';
+import { aiRouter } from './presentation/routes/aiRoutes';
 
 export const app = new Hono();
 const passwordHasher = new BunPasswordHasher();
@@ -39,6 +40,9 @@ app.use('*', async (c, next) => {
   }, traceId);
 });
 
+// AI routes (Fase 6)
+app.route('/api/v1', aiRouter);
+
 // Health check endpoint
 app.get('/health', (c) => {
   return c.json({
@@ -48,7 +52,13 @@ app.get('/health', (c) => {
     framework: 'Hono',
     timestamp: new Date().toISOString()
   });
+
+// AI routes (Fase 6)
+app.route('/api/v1', aiRouter);
 });
+
+// AI routes (Fase 6)
+app.route('/api/v1', aiRouter);
 
 // --- Rutas de Autenticación (Fase 2) ---
 app.post('/api/v1/auth/login', async (c) => {
@@ -65,6 +75,9 @@ app.post('/api/v1/auth/login', async (c) => {
 
   if (!isMatch || email !== 'admin@eventos.com') {
     Logger.warn('Intento de inicio de sesión fallido', { email });
+
+// AI routes (Fase 6)
+app.route('/api/v1', aiRouter);
     return c.json({ success: false, error: 'Credenciales inválidas.' }, 401);
   }
 
@@ -82,7 +95,13 @@ app.post('/api/v1/auth/login', async (c) => {
       tokenType: 'Bearer'
     }
   });
+
+// AI routes (Fase 6)
+app.route('/api/v1', aiRouter);
 });
+
+// AI routes (Fase 6)
+app.route('/api/v1', aiRouter);
 
 // Ruta protegida con JWT Middleware
 app.get('/api/v1/user/profile', authMiddleware, (c) => {
@@ -94,7 +113,13 @@ app.get('/api/v1/user/profile', authMiddleware, (c) => {
       message: 'Acceso autorizado mediante token JWT verificado.'
     }
   });
+
+// AI routes (Fase 6)
+app.route('/api/v1', aiRouter);
 });
+
+// AI routes (Fase 6)
+app.route('/api/v1', aiRouter);
 
 // Endpoint para subir comprobantes o imágenes con Azure Blob Storage
 app.post('/api/v1/storage/upload', authMiddleware, async (c) => {
@@ -113,7 +138,13 @@ app.post('/api/v1/storage/upload', authMiddleware, async (c) => {
     success: true,
     data: result
   });
+
+// AI routes (Fase 6)
+app.route('/api/v1', aiRouter);
 });
+
+// AI routes (Fase 6)
+app.route('/api/v1', aiRouter);
 
 const PORT = process.env.PORT || 4000;
 console.log(`Server starting on port ${PORT}...`);
